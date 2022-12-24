@@ -3,16 +3,16 @@
   "version": "1.0.0",
   "description": "## Trigger",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "make-zip": "rm -rf function.zip && zip function.zip ./*",
-    "config": "aws lambda update-function-configuration --function-name calc-function --environment 'Variables={env=dev, author=leedonggyu}'",
-    "update-zip": "aws lambda update-function-code --function-name calc-function --zip-file fileb://function.zip",
-    "invoke": "aws lambda invoke --function-name calc-function --cli-binary-format raw-in-base64-out --payload file://request.json response.json",
-    "deploy": "npm run make-zip && npm run config && npm run update-zip && npm run invoke",
-    "create": "npm run make-zip && aws lambda create-function --function-name calc-function --runtime nodejs14.x --zip-file fileb://function.zip --handler index.handler --role arn:aws:iam::344513066772:role/lambda-ex",
+    "deploy": "node ./command.js",
     "delete": "aws lambda delete-function --function-name calc-function",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "qoa": "^0.2.0",
+    "shelljs": "^0.8.5"
+  }
 }

@@ -1,6 +1,9 @@
-// Sync
+/**
+ * funcs
+ */
 export const syncCalculatorHandler = async (event) => {
   console.log('[LOG] : ', JSON.stringify(event, null, 4))
+  console.log('[ENV] : ', process.env.ENV, '[AUTHOR] : ', process.env.author)
 
   const { idx1, idx2, opt } = event
 
@@ -27,3 +30,4 @@ export const syncCalculatorHandler = async (event) => {
 }
 
 // Async
+export const onRequestCalculatorHandler = async (event) => {}
