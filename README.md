@@ -21,3 +21,8 @@
   - [x] Kinesis Stream
   - [x] Handle To Read Or Batch
   - [x] Set a Batch Size
+
+### Function URL VS Amazon API Gateway
+
+- URL을 갖는다는 관점에서는 둘다 동일함
+- Function URL은 Request Validation, Throttling Customer Authorization, Customer Domain Name, Usage Plans등등의 이점을 가질 수 없다.
