@@ -62,6 +62,7 @@ const executeDeployCommand = (funcHandler) => {
   )
 
   setTimeout(() => {
+    // shell.exec(`aws lambda create-function-url-config --function-name ${funcHandler} --auth-type NONE`)
     shell.exec(`aws lambda update-function-code --function-name ${funcHandler} --zip-file fileb://function.zip`)
     console.log(`[UPDATE] Function of ${funcHandler}`)
   }, 5000)

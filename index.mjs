@@ -1,5 +1,6 @@
 /**
- * funcs
+ * @desc
+ * Basic Sync Lambda
  */
 export const syncCalculatorHandler = async (event) => {
   console.log('[LOG] : ', JSON.stringify(event, null, 4))
@@ -7,27 +8,42 @@ export const syncCalculatorHandler = async (event) => {
 
   const { idx1, idx2, opt } = event
 
-  let result
-  switch (opt) {
-    case '+':
-      result = idx1 + idx2
-      break
-    case '-':
-      result = idx1 - idx2
-      break
-    case '*':
-      result = idx1 * idx2
-      break
-    case '/':
-      result = idx1 / idx2
-      break
-  }
-
   return {
     status: 200,
-    data: result,
+    data: calculator(idx1, idx2, opt),
   }
 }
 
-// Async
-export const onRequestCalculatorHandler = async (event) => {}
+/**
+ * @desc
+ * HTTP Call
+ */
+export const asyncCalculatorHandler = async (event) => {
+  console.log(`[RECEIVED] ${JSON.stringify(event, null, 2)}`)
+
+  const { idx1, idx2, opt } = event.body
+
+  return {
+    status: 200,
+    data: calculator(idx1, idx2, opt),
+  }
+}
+
+const calculator = (idx1, idx2, opt) => {
+  switch (opt) {
+    case '+':
+      return idx1 + idx2
+
+    case '-':
+      return idx1 - idx2
+
+    case '*':
+      return idx1 * idx2
+
+    case '/':
+      return idx1 / idx2
+
+    default:
+      return null
+  }
+}
